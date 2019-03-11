@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     public float speed = 2;
 
-    private float jumpForce = 400;
+    public float jumpForce = 400;
     private Rigidbody2D rb;
     private bool facingRight = false;
     private bool onGround = false;
@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
             speed = 0;
             transform.Rotate(new Vector3(0, 0, -180));
             //audioScr.Play();
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 0.5f);
         }
 
     }

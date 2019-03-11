@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
 
-    private int lifes = 3;
+    private int lifes = 2;
     private int beers = 0;
 
     // Start is called before the first frame update
@@ -50,11 +50,14 @@ public class GameManager : MonoBehaviour
 
     public void Refresh()
     {
-        //GameObject.Find("LifeText").GetComponent<Text>().text = lifes.ToString();
+        GameObject.Find("LifeText").GetComponent<Text>().text = lifes.ToString();
        // GameObject.Find("BeerText").GetComponent<Text>().text = beers.ToString();
     }
 
-
+    public int GetBeers()
+    {
+        return beers;
+    }
     public void SetBeers(int br)
     {
         beers += br;
@@ -66,8 +69,11 @@ public class GameManager : MonoBehaviour
         Refresh();
     }
 
-    public int GetBeers()
+    public void RestoreHud()
     {
-        return beers;
+        beers = 0;
+        lifes = 2;
     }
+
+
 }

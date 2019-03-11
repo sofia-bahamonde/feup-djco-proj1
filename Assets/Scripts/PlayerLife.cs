@@ -7,7 +7,6 @@ public class PlayerLife : MonoBehaviour
 {
 
     private Animator anim;
-    private bool alive = true;
     public AudioClip dieSound;
     private AudioSource audioScr;
 
@@ -27,25 +26,27 @@ public class PlayerLife : MonoBehaviour
 
     public void LoseLife()
     {
-        if (alive)
+        GameManager.gm.SetLifes(-1);
+        //audioScr.clip = dieSound;
+        //audioScr.Play();
+
+        if (GameManager.gm.GetLifes() > 0)
         {
-            //audioScr.clip = dieSound;
-            //audioScr.Play();
-            alive = false;
             anim.SetTrigger("Hit");
-            GameManager.gm.SetLifes(-1);
-            // gameObject.GetComponent<PlayerAttack>().enabled = false;
-            //gameObject.GetComponent<PlayerController>().enabled = false;
+
+        }else {
+            anim.SetTrigger("Died");
+            //gameObject.GetComponent<PlayerAttack>().enabled = false;
+            gameObject.GetComponent<PlayerController>().enabled = false;
+
         }
 
     }
 
     public void Reset()
     {
-        if (GameManager.gm.GetLifes() > 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        GameManager.gm.RestoreHud();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 }

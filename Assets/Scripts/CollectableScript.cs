@@ -12,7 +12,7 @@ public class CollectableScript : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
         col = gameObject.GetComponent<BoxCollider2D>();
-       // audioScr = gameObject.GetComponent<AudioSource>();
+        audioScr = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class CollectableScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //audioScr.Play();
+            audioScr.Play();
             GameManager.gm.SetBeers(1);
             col.enabled = false;
             anim.SetTrigger("PickUp");

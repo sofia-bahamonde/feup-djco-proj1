@@ -8,13 +8,14 @@ public class PlayerLife : MonoBehaviour
 
     private Animator anim;
     public AudioClip dieSound;
+    public AudioClip hitSound;
     private AudioSource audioScr;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        //audioScr = gameObject.GetComponent<AudioSource>();
+        audioScr = gameObject.GetComponent<AudioSource>();
         GameManager.gm.Refresh();
     }
 
@@ -27,14 +28,16 @@ public class PlayerLife : MonoBehaviour
     public void LoseLife()
     {
         GameManager.gm.SetLifes(-1);
-        //audioScr.clip = dieSound;
-        //audioScr.Play();
 
         if (GameManager.gm.GetLifes() > 0)
         {
+            audioScr.clip = hitSound;
+            audioScr.Play();
             anim.SetTrigger("Hit");
 
         }else {
+            audioScr.clip = dieSound;
+            audioScr.Play();
             anim.SetTrigger("Died");
             //gameObject.GetComponent<PlayerAttack>().enabled = false;
             gameObject.GetComponent<PlayerController>().enabled = false;

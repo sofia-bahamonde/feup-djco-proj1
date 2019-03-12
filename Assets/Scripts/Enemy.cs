@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("EnemyGroundCheck");
-        //audioScr = gameObject.GetComponent<AudioSource>();
+        audioScr = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //audioScr.Play();
+            audioScr.Play();
             BoxCollider2D[] boxes = gameObject.GetComponents<BoxCollider2D>();
             foreach (BoxCollider2D box in boxes)
             {
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
             speed = 0;
             transform.Rotate(new Vector3(0, 0, -180));
-            //audioScr.Play();
+            
             Destroy(gameObject, 0.5f);
         }
 

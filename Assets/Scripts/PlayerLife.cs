@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;
     public AudioClip dieSound;
     public AudioClip hitSound;
+    public int playerFall;
     private AudioSource audioScr;
 
     // Start is called before the first frame update
@@ -22,7 +23,15 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
+        if(gameObject.transform.position.y < playerFall)
+        {
+            audioScr.clip = dieSound;
+            audioScr.Play();
+            gameObject.GetComponent<PlayerController>().enabled = false;
+            System.Threading.Thread.Sleep(1000);
+            Reset();
+        }
     }
 
     public void LoseLife()

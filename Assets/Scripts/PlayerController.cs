@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public static PlayerController pc;
+
     public float speed;
     public float jumpForce;
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         groundCheck = transform.Find("GroundCheck");
@@ -65,4 +69,10 @@ public class PlayerController : MonoBehaviour
         playerScale.x *= -1;
         transform.localScale = playerScale;
     }
+
+    public void AddPowerUpPlayer()
+    {
+        Destroy(gameObject, 1);
+    }
+
 }

@@ -69,6 +69,12 @@ public class GameManager : MonoBehaviour
         Refresh();
     }
 
+    public void AddPowerUp()
+    {
+        PlayerController.pc.AddPowerUpPlayer();
+        Refresh();
+    }
+
     public void RestoreHud()
     {
         beers = 0;

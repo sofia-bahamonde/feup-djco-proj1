@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpForce: 150
+  jumpForce: 200
 --- !u!114 &1468644207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4982,6 +4982,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -23.059002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626931465090035772, guid: e531fc341483fe54ea30a0fa59f86aa2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626931465090035772, guid: e531fc341483fe54ea30a0fa59f86aa2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626931465090035772, guid: e531fc341483fe54ea30a0fa59f86aa2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.107059665
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626931465090035773, guid: e531fc341483fe54ea30a0fa59f86aa2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e531fc341483fe54ea30a0fa59f86aa2, type: 3}

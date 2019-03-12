@@ -1150,6 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dieSound: {fileID: 8300000, guid: 68c8113f1ef21cd41ba6fca2211720ed, type: 3}
   hitSound: {fileID: 8300000, guid: 2b3131c760cef06418c16982909c5a5c, type: 3}
+  playerFall: -6
 --- !u!82 &1468644208
 AudioSource:
   m_ObjectHideFlags: 0

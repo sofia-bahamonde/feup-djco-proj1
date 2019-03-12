@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     public void Refresh()
     {
         GameObject.Find("LifeText").GetComponent<Text>().text = lifes.ToString();
-       // GameObject.Find("BeerText").GetComponent<Text>().text = beers.ToString();
+        GameObject.Find("CollectableText").GetComponent<Text>().text = beers.ToString();
     }
 
     public int GetBeers()

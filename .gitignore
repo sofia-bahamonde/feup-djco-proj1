@@ -6,9 +6,11 @@
 [Bb]uild
 /[Bb]uilds/
 /[Ll]ibrary/
+[Ll]ibrary/
 sysinfo.txt
 *.stackdump
 /Assets/AssetStoreTools*
+Assets/AssetStoreTools*
 *.apk
 *.unitypackage
  
@@ -18,17 +20,26 @@ sysinfo.txt
 [Ee]xported[Oo]bj/
 .vs/
 /*.userprefs
+*.userprefs
 /*.csproj
+*.csproj
 /*.pidb
 *.pidb.meta
 /*.suo
+*.suo
 /*.sln*
+*.sln*
 /*.user
+*.user
 /*.unityproj
+*.unityproj
 /*.booproj
+*.booproj
 .consulo/
 /*.tmp
+*.tmp
 /*.svd
+*.svd
  
 # ============ #
 # OS generated #

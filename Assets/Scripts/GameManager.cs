@@ -60,7 +60,9 @@ public class GameManager : MonoBehaviour
     }
     public void SetBeers(int br)
     {
+        
         beers += br;
+       
         if (beers >= 10)
         {
             beers = 0;

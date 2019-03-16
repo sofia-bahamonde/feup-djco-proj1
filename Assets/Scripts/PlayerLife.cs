@@ -29,7 +29,8 @@ public class PlayerLife : MonoBehaviour
             audioScr.clip = dieSound;
             audioScr.Play();
             gameObject.GetComponent<PlayerController>().enabled = false;
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
+            GameManager.gm.RestoreHud();
             Reset();
         }
     }
@@ -50,6 +51,7 @@ public class PlayerLife : MonoBehaviour
             anim.SetTrigger("Died");
             //gameObject.GetComponent<PlayerAttack>().enabled = false;
             gameObject.GetComponent<PlayerController>().enabled = false;
+            GameManager.gm.RestoreHud();
 
         }
 
@@ -57,7 +59,7 @@ public class PlayerLife : MonoBehaviour
 
     public void Reset()
     {
-        GameManager.gm.RestoreHud();
+    
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }

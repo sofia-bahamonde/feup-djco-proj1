@@ -11,6 +11,7 @@ public class PlayerLife : MonoBehaviour
     public AudioClip hitSound;
     public int playerFall;
     private AudioSource audioScr;
+    private bool check = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,29 +38,44 @@ public class PlayerLife : MonoBehaviour
 
     public void LoseLife()
     {
-        if (!GameManager.gm.IsPowerUp())
+        if (check)
         {
-            GameManager.gm.SetLifes(-1);
+
+
+            check = false;
+            if (!GameManager.gm.IsPowerUp())
+            {
+                GameManager.gm.SetLifes(-1);
+            }
+
+
+            if (GameManager.gm.GetLifes() > 0)
+            {
+                audioScr.clip = hitSound;
+                audioScr.Play();
+                anim.SetTrigger("Hit");
+
+                if (GameManager.gm.IsPowerUp())
+                {
+                    gameObject.GetComponent<CircleCollider2D>().radius = 0.08876744f;
+                    transform.Find("GroundCheck").position = new Vector3(transform.Find("GroundCheck").position.x + 0.017f, transform.Find("GroundCheck").position.y + 0.021f, 0);
+                    GameManager.gm.ChangePowerUp();
+                }
+
+            }
+            else
+            {
+                audioScr.clip = dieSound;
+                audioScr.Play();
+                anim.SetTrigger("Died");
+                //gameObject.GetComponent<PlayerAttack>().enabled = false;
+                gameObject.GetComponent<PlayerController>().enabled = false;
+                GameManager.gm.RestoreHud();
+
+            }
+
+            check = true;
         }
-        
-
-        if (GameManager.gm.GetLifes() > 0)
-        {
-            audioScr.clip = hitSound;
-            audioScr.Play();
-            anim.SetTrigger("Hit");
-
-        }
-        else {
-            audioScr.clip = dieSound;
-            audioScr.Play();
-            anim.SetTrigger("Died");
-            //gameObject.GetComponent<PlayerAttack>().enabled = false;
-            gameObject.GetComponent<PlayerController>().enabled = false;
-            GameManager.gm.RestoreHud();
-
-        }
-
     }
 
     public void Reset()
@@ -73,6 +89,8 @@ public class PlayerLife : MonoBehaviour
     {
 
         GameManager.gm.ChangePowerUp();
+        gameObject.GetComponent<CircleCollider2D>().radius = 0.1927377f;
+        transform.Find("GroundCheck").position = new Vector3(transform.Find("GroundCheck").position.x - 0.017f, transform.Find("GroundCheck").position.y - 0.021f,0);
         anim.SetTrigger("PowerUp");
 
     }

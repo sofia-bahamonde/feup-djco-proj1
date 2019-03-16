@@ -30,6 +30,12 @@ public class PlayerLife : MonoBehaviour
             audioScr.clip = dieSound;
             audioScr.Play();
             gameObject.GetComponent<PlayerController>().enabled = false;
+            if (GameManager.gm.IsPowerUp())
+            {
+                gameObject.GetComponent<CircleCollider2D>().radius = 0.08876744f;
+                transform.Find("GroundCheck").position = new Vector3(transform.Find("GroundCheck").position.x + 0.017f, transform.Find("GroundCheck").position.y + 0.021f, 0);
+                GameManager.gm.ChangePowerUp();
+            }
             System.Threading.Thread.Sleep(500);
             GameManager.gm.RestoreHud();
             Reset();

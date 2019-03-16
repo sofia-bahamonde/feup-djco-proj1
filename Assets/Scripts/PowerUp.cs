@@ -30,7 +30,14 @@ public class PowerUp : MonoBehaviour
            // audioScr.Play();
             col.enabled = false;
             anim.SetTrigger("Collect");
-            other.gameObject.GetComponent<PlayerLife>().PowerUp();
+            if (GameManager.gm.IsPowerUp())
+            {
+                GameManager.gm.SetLifes(1);
+            }
+            else
+            {
+                other.gameObject.GetComponent<PlayerLife>().PowerUp();
+            }
             Destroy(gameObject, 1);
         }
 

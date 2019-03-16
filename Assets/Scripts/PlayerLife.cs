@@ -37,7 +37,11 @@ public class PlayerLife : MonoBehaviour
 
     public void LoseLife()
     {
-        GameManager.gm.SetLifes(-1);
+        if (!GameManager.gm.IsPowerUp())
+        {
+            GameManager.gm.SetLifes(-1);
+        }
+        
 
         if (GameManager.gm.GetLifes() > 0)
         {
@@ -45,7 +49,8 @@ public class PlayerLife : MonoBehaviour
             audioScr.Play();
             anim.SetTrigger("Hit");
 
-        }else {
+        }
+        else {
             audioScr.clip = dieSound;
             audioScr.Play();
             anim.SetTrigger("Died");
@@ -63,4 +68,13 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+    public void PowerUp()
+    {
+
+        GameManager.gm.ChangePowerUp();
+        anim.SetTrigger("PowerUp");
+
+    }
+
 }

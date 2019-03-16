@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private int lifes = 2;
     private int beers = 0;
+    private bool powerUp = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -76,6 +77,18 @@ public class GameManager : MonoBehaviour
         beers = 0;
         lifes = 2;
     }
+
+
+    public void ChangePowerUp()
+    {
+        powerUp = !powerUp;
+    }
+
+    public bool IsPowerUp()
+    {
+        return powerUp;
+    }
+
 
 
 }

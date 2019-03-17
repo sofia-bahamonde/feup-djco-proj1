@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3124176797363713217}
   - component: {fileID: 3124176797363713216}
   - component: {fileID: 3124176797363713231}
-  m_Layer: 1
+  m_Layer: 11
   m_Name: Nortada
   m_TagString: Untagged
   m_Icon: {fileID: 0}

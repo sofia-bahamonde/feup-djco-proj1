@@ -1,26 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PowerUp : MonoBehaviour
 {
-
     Animator anim;
     BoxCollider2D col;
     private AudioSource audioScr;
+    public float fadeOutTime = 2.0f;
+    bool hasCollision = false;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         col = gameObject.GetComponent<BoxCollider2D>();
-        //audioScr = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(hasCollision) {
+            Color c = this.GetComponent<Renderer>().material.color;
+            c.a -= Time.deltaTime * fadeOutTime;
+            c.b -= Time.deltaTime * fadeOutTime * 2;
+            this.GetComponent<Renderer>().material.color = c;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -37,8 +43,9 @@ public class PowerUp : MonoBehaviour
             else
             {
                 other.gameObject.GetComponent<PlayerLife>().PowerUp();
+                hasCollision = true;
             }
-            Destroy(gameObject, 1);
+           Destroy(gameObject, 1);
         }
 
     }

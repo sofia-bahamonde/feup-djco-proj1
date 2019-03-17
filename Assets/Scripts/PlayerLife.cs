@@ -60,6 +60,7 @@ public class PlayerLife : MonoBehaviour
                 audioScr.clip = hitSound;
                 audioScr.Play();
                 anim.SetTrigger("Hit");
+                gameObject.GetComponent<PlayerController>().enabled = false;
 
                 if (GameManager.gm.IsPowerUp())
                 {
@@ -86,8 +87,11 @@ public class PlayerLife : MonoBehaviour
 
     public void Reset()
     {
-    
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+        if(GameManager.gm.GetLifes() >= 0){
+            Debug.Log("REset");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
     }
 

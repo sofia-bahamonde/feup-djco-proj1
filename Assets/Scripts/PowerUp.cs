@@ -25,7 +25,6 @@ public class PowerUp : MonoBehaviour
         if(hasCollision) {
             Color c = this.GetComponent<Renderer>().material.color;
             c.a -= Time.deltaTime * fadeOutTime;
-            c.b -= Time.deltaTime * fadeOutTime * 2;
             this.GetComponent<Renderer>().material.color = c;
         }
     }

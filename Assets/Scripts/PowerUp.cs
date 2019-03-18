@@ -16,6 +16,7 @@ public class PowerUp : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
         col = gameObject.GetComponent<BoxCollider2D>();
+        audioScr = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,6 @@ public class PowerUp : MonoBehaviour
         if(hasCollision) {
             Color c = this.GetComponent<Renderer>().material.color;
             c.a -= Time.deltaTime * fadeOutTime;
-            c.b -= Time.deltaTime * fadeOutTime * 2;
             this.GetComponent<Renderer>().material.color = c;
         }
     }
@@ -33,7 +33,7 @@ public class PowerUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           // audioScr.Play();
+            audioScr.Play();
             col.enabled = false;
             anim.SetTrigger("Collect");
             if (GameManager.gm.IsPowerUp())

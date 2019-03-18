@@ -10,7 +10,7 @@ public class VideoPlay : MonoBehaviour
     void Start()
     {
        
-        StartCoroutine(WaitAndLoad(57f, "Level01"));
+        StartCoroutine(WaitAndLoad(54f, "Level01"));
     }
 
     private IEnumerator WaitAndLoad(float value, string scene)

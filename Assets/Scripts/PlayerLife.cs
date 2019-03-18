@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-
     private Animator anim;
     public AudioClip dieSound;
     public AudioClip hitSound;
@@ -40,8 +39,10 @@ public class PlayerLife : MonoBehaviour
                 GameManager.gm.ChangePowerUp();
             }
             System.Threading.Thread.Sleep(500);
-            GameManager.gm.RestoreHud();
-            Reset();
+
+           
+          GameOver();
+
         }
 
         if(effectFadeOut) {
@@ -97,9 +98,7 @@ public class PlayerLife : MonoBehaviour
                 audioScr.clip = dieSound;
                 audioScr.Play();
                 anim.SetTrigger("Died");
-                //gameObject.GetComponent<PlayerAttack>().enabled = false;
-                gameObject.GetComponent<PlayerController>().enabled = false;
-                GameManager.gm.RestoreHud();
+
 
             }
 
@@ -111,10 +110,13 @@ public class PlayerLife : MonoBehaviour
     {
         
         if(GameManager.gm.GetLifes() >= 0){
-            Debug.Log("REset");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+    }
+
+    public void GameOver(){
+          SceneManager.LoadScene("GameOver");
     }
 
     public void PowerUp()

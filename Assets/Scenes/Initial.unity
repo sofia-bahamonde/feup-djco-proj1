@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b208488d565d44ba73671835988771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 54
+  nextScene: Level01
 --- !u!328 &1332338790
 VideoPlayer:
   m_ObjectHideFlags: 0

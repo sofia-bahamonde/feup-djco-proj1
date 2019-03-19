@@ -6,11 +6,13 @@ using UnityEngine.Video;
 
 public class VideoPlay : MonoBehaviour
 {
+    public float time;
+    public string nextScene;
     // Start is called before the first frame update
     void Start()
     {
        
-        StartCoroutine(WaitAndLoad(54f, "Level01"));
+        StartCoroutine(WaitAndLoad(time, nextScene));
     }
 
     private IEnumerator WaitAndLoad(float value, string scene)

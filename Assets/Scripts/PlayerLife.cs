@@ -70,7 +70,8 @@ public class PlayerLife : MonoBehaviour
     {
         if (check)
         {
-           // check = false;
+            check = false;
+            Debug.Log(GameManager.gm.IsPowerUp());
             if (!GameManager.gm.IsPowerUp())
             {
                 GameManager.gm.SetLifes(-1);
@@ -80,6 +81,14 @@ public class PlayerLife : MonoBehaviour
             if (GameManager.gm.GetLifes() > 0)
             {
 
+               
+
+                audioScr.clip = hitSound;
+                audioScr.Play();
+                anim.SetTrigger("Hit");
+
+                //gameObject.GetComponent<PlayerController>().enabled = false;
+
                 if (GameManager.gm.IsPowerUp())
                 {
                     gameObject.GetComponent<CircleCollider2D>().radius = 0.08876744f;
@@ -87,14 +96,6 @@ public class PlayerLife : MonoBehaviour
                     GameManager.gm.ChangePowerUp();
                 }
 
-                audioScr.clip = hitSound;
-                audioScr.Play();
-                anim.SetTrigger("Hit");
-
-                //gameObject.GetComponent<PlayerController>().enabled = false;
-                
-
-                
 
             }
             else
@@ -109,18 +110,18 @@ public class PlayerLife : MonoBehaviour
 
             }
 
-            //check = true;
         }
     }
 
-    /*public void Reset()
+    public void Reset()
     {
-        
-        if(GameManager.gm.GetLifes() >= 0){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 
-    }*/
+        /* if(GameManager.gm.GetLifes() >= 0){
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         }*/
+        check = true;
+
+    }
 
     public void GameOver(){
         GameManager.gm.RestoreHud();

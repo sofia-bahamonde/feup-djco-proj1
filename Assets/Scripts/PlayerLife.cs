@@ -63,7 +63,6 @@ public class PlayerLife : MonoBehaviour
                 effectFadeIn = false;
             }
             this.GetComponent<Renderer>().material.color = c;    
-            //this.GetComponent<Renderer>().material.color = originalColor;
         }
     }
 
@@ -71,7 +70,7 @@ public class PlayerLife : MonoBehaviour
     {
         if (check)
         {
-            check = false;
+           // check = false;
             if (!GameManager.gm.IsPowerUp())
             {
                 GameManager.gm.SetLifes(-1);
@@ -80,10 +79,6 @@ public class PlayerLife : MonoBehaviour
 
             if (GameManager.gm.GetLifes() > 0)
             {
-                audioScr.clip = hitSound;
-                audioScr.Play();
-                anim.SetTrigger("Hit");
-                gameObject.GetComponent<PlayerController>().enabled = false;
 
                 if (GameManager.gm.IsPowerUp())
                 {
@@ -92,30 +87,43 @@ public class PlayerLife : MonoBehaviour
                     GameManager.gm.ChangePowerUp();
                 }
 
+                audioScr.clip = hitSound;
+                audioScr.Play();
+                anim.SetTrigger("Hit");
+
+                //gameObject.GetComponent<PlayerController>().enabled = false;
+                
+
+                
+
             }
             else
             {
                 audioScr.clip = dieSound;
                 audioScr.Play();
                 anim.SetTrigger("Died");
+                gameObject.GetComponent<PlayerController>().enabled = false;
+                
+                
 
 
             }
 
-            check = true;
+            //check = true;
         }
     }
 
-    public void Reset()
+    /*public void Reset()
     {
         
         if(GameManager.gm.GetLifes() >= 0){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-    }
+    }*/
 
     public void GameOver(){
+        GameManager.gm.RestoreHud();
           SceneManager.LoadScene("GameOver");
     }
 

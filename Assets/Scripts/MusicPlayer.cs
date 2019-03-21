@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    private static MusicPlayer mp;
+    public static MusicPlayer mp;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,5 +24,12 @@ public class MusicPlayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void StopMusic()
+    {
+        gameObject.GetComponent<AudioSource>().Stop();
+
     }
 }

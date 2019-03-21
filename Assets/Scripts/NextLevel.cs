@@ -21,6 +21,7 @@ public class NextLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            MusicPlayer.mp.StopMusic();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

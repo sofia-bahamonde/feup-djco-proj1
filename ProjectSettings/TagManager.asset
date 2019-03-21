@@ -42,12 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 2297956591
-    locked: 0
   - name: Layer 2
     uniqueID: 2439427131
     locked: 0
   - name: Background
     uniqueID: 3019788381
+    locked: 0
+  - name: Player
+    uniqueID: 2297956591
     locked: 0
